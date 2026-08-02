@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <style>
+       body {
+         font-family: Arial;
+       }
+    
+      .buttons {
+        background-color: rgb(0,123,255);
+        margin-top: 10px;
+        margin-right: 15px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        padding: 8px;
+        font-size: 12px;
+      }
+    
+      .textboxes {
+        margin-right: 10px;
+      }
+    
+      .passwordDiv {
+        display: flex;
+        align-items: start;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function LoginForm(){
+        return (
+          <>
+          <Textboxes/>
+          <Buttons/>
+          </> 
+        );
+      }
+      function Buttons(){
+        return (
+        <>
+          <Button 
+            btnmessage="Login" 
+          />
+          <Button 
+            btnmessage="Sign Up" 
+          />
+        </>
+      );
+      }
+
+      function Button({ btnmessage }){
+        return (
+          <button
+            className="buttons"
+          > {btnmessage} </button>
+        );
+      }
+
+      function Textboxes(){
+        const [ passwordVis, setPasswordVis ] = React.useState(true);
+        
+        function togglePasswordVis(){
+          passwordVis ? setPasswordVis(false) : setPasswordVis(true);
+        }
+        
+        return (
+          <>
+            <Textbox 
+              placeholder="Email" 
+            />
+            <div
+              className="passwordDiv"
+            >
+            <Textbox 
+              placeholder="Password" 
+              type={passwordVis ? "text" :"password"}
+            />
+            <button 
+              className="show-hide-button"
+              onClick={togglePasswordVis}
+            > {passwordVis ? "Hide" : "Show"} </button>
+            </div>
+          </>
+        );
+      }
+
+      function Textbox({ placeholder, type }) {       
+        return (
+          <div>
+            <input 
+              className="textboxes"
+              placeholder={placeholder}
+              type={type}
+            />
+          </div> 
+        );
+      }
+
+      function App(){
+        return (
+          <>
+          <p>Hello, welcome to my website</p>
+          {LoginForm()}
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container)
+      root.render(<App/>);
+    </script>
+  </body>
+</html>

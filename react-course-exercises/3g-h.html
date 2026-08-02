@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>L3 Exercises G-H</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+    function InteractiveMessageBox(){
+      const [name, setName] = React.useState('');
+      
+      function nameChanged(event){
+        setName(event.target.value)
+      }
+      
+      function resetName(event){
+        setName('');
+      }
+      
+      function giveExampleName(event){
+        setName('Liz');
+      }
+      
+      return(
+        <>
+          <input 
+            placeholder="Please type your name"
+            size="20"
+            value={name}
+            onChange={nameChanged}
+          />
+          <button onClick={resetName}> Reset </button>
+          <button onClick={giveExampleName}> Example </button>
+          <p> Hello {name} </p>
+        </>
+      );
+    }
+    
+      function App(){
+        
+        return (
+        <>
+          <InteractiveMessageBox/>
+        </>
+        );
+      }   
+
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container)
+      root.render(<App/>);
+    </script>
+  </body>
+</html>
