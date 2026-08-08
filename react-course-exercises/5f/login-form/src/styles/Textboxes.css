@@ -1,0 +1,6 @@
+.passwordDiv {
+  display: flex;
+  align-items: start;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
