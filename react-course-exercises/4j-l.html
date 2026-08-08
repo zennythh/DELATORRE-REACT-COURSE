@@ -8,6 +8,15 @@
         margin-top: 0px;
         margin-bottom: 0px;
       }
+
+      .app-container {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
     
       .chat-profile {
         width: 45px;
@@ -40,27 +49,6 @@
         max-width: 300px;
       }
     
-      .chat-messages {
-        flex-grow: 1;
-        margin-top: 20px;
-        overflow: scroll;
-        scrollbar-width: none;
-      }
-    
-      .chat-input-container {
-        display: flex; 
-        margin-bottom: 60px;
-      }
-    
-      .app-container {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-    
       .send-button {
         background-color: rgb(25, 135, 84);
         color: white;
@@ -79,10 +67,22 @@
         font-size: 15px;
         flex-grow: 1;
       }
+
+      .chat-input-container {
+        display: flex; 
+        margin-bottom: 60px;
+      }
       
       .welcome-msg {
         text-align: center;
         color: gray;
+      }
+
+      .chat-messages {
+        flex-grow: 1;
+        margin-top: 20px;
+        overflow: scroll;
+        scrollbar-width: none;
       }
      
     </style>
@@ -250,7 +250,8 @@
         return (
           <div
             className="app-container"
-          > 
+          > 
+
           <ChatMessages 
             chatMessages={chatMessages}
             isLoading={isLoading}

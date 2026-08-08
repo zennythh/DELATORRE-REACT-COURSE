@@ -1,0 +1,11 @@
+.chat-messages {
+        flex-grow: 1;
+        margin-top: 20px;
+        overflow: scroll;
+        scrollbar-width: none;
+}
+
+.welcome-msg {
+        text-align: center;
+        color: gray;
+}
