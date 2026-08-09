@@ -1,6 +1,7 @@
 import '../styles/ChatMessage.css'
+import dayjs from 'dayjs';
 import RobotProfile from '../assets/robot.png'
-import UserProfile from '../assets/user.png'
+import UserProfile from '../assets/customUser.jpeg'
 import LoadingSpinner from '../assets/loading-spinner.gif'
 
 export function ChatMessage({ message, sender }){
@@ -27,6 +28,10 @@ export function ChatMessage({ message, sender }){
             />              
         ) : (message) 
       }
+        <p className="timestamp"> {message !== "loading-spinner" ? 
+        (dayjs(dayjs().valueOf()).format('h:mma'))
+        : (null)}
+        </p>
       </div>
       {sender === "user" && (
         <img src={UserProfile}
