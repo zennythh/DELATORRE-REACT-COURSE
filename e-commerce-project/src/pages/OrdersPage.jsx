@@ -1,9 +1,11 @@
 import { Header } from '../components/Header'
 import '../styles/OrdersPage.css'
+import OrdersIcon from '../images/orders-favicon.png'
 
 export function OrdersPage(){
   return(
     <>
+      <link rel="icon" href={OrdersIcon} />
       <title> Orders </title>
       <Header />
   
