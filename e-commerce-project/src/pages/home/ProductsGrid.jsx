@@ -24,7 +24,7 @@ export function ProductsGrid({ products }){
           </div>
 
           <div className="product-price">
-            ${formatMoney(product.priceCents)}
+            {formatMoney(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">
