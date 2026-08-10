@@ -4,6 +4,13 @@ import HomeIcon from '../images/home-favicon.png'
 import { products } from '../../starting-code/data/products.js'
 
 export function HomePage(){
+  fetch('http://localhost:3000/api/products')
+    .then((response) => {
+      return response.json()
+    }) .then((data) => {
+        console.log(data)
+      })
+  
   return (
     <>
       <link rel="icon" href={HomeIcon} />
