@@ -6,7 +6,7 @@ import { PaymentSummary } from './PaymentSummary'
 import './CheckoutPage.css'
 import CartIcon from '../../images/cart-favicon.png'
 
-export function CheckoutPage({ cartItems, setCartItems }){
+export function CheckoutPage({ cartItems, getCartItems }){
   const [ deliveryOpts, setDeliveryOpts ] = useState([])
   const [ paymentSummary, setPaymentSummary ] = useState(null)
   
@@ -21,7 +21,7 @@ export function CheckoutPage({ cartItems, setCartItems }){
     }
     getDeliveries()
     getPaymentSummaries()    
-  }, [])
+  }, [cartItems])
   
   return (
     <>
@@ -34,7 +34,7 @@ export function CheckoutPage({ cartItems, setCartItems }){
         <div className="page-title">Review your order</div>
   
         <div className="checkout-grid">
-          <OrderSummary cartItems={cartItems} deliveryOpts={deliveryOpts} />
+          <OrderSummary cartItems={cartItems} getCartItems={getCartItems} deliveryOpts={deliveryOpts} />
           <PaymentSummary paymentSummary={paymentSummary} />
         </div>
       </div>
