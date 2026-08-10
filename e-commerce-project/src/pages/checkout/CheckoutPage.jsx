@@ -2,7 +2,7 @@ import { CheckoutHeader } from './CheckoutHeader'
 import './CheckoutPage.css'
 import CartIcon from '../../images/cart-favicon.png'
 
-export function CheckoutPage(){
+export function CheckoutPage({ cartItems, setCartItems }){
   return (
     <>
       <link rel="icon" href={CartIcon} />

@@ -4,9 +4,8 @@ import { Header } from '../components/Header'
 import '../styles/HomePage.css'
 import HomeIcon from '../images/home-favicon.png'
 
-export function HomePage(){
+export function HomePage({ cartItems, setCartItems }){
   const [ products, setProducts ] = useState([]);
-  const [ cartItems, setCartItems ] = useState([]);
   
   useEffect(() => {
     axios.get('/api/products')
@@ -15,12 +14,6 @@ export function HomePage(){
     }) 
   }, [])
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/cart-items')
-    .then((response) => {
-      setCartItems(response.data);
-    }) 
-  }, [])
   
   return (
     <>

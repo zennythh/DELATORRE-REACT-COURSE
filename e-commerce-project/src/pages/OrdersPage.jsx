@@ -4,16 +4,7 @@ import { Header } from '../components/Header'
 import '../styles/OrdersPage.css'
 import OrdersIcon from '../images/orders-favicon.png'
 
-export function OrdersPage(){
-  const [ cartItems, setCartItems ] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/cart-items')
-    .then((response) => {
-      setCartItems(response.data);
-    }) 
-  }, [])
-  
+export function OrdersPage({ cartItems, setCartItems }){
   return(
     <>
       <link rel="icon" href={OrdersIcon} />

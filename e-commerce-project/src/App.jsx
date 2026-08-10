@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Routes, Route } from 'react-router'
 import { HomePage } from './pages/HomePage'
 import { CheckoutPage } from './pages/checkout/CheckoutPage'
@@ -7,11 +9,20 @@ import { NotFoundPage } from './pages/NotFoundPage'
 import './App.css'
 
 function App() {
+  const [ cartItems, setCartItems ] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/cart-items')
+    .then((response) => {
+      setCartItems(response.data);
+    }) 
+  }, [])
+  
   return (
     <Routes>
-    <Route index element={<HomePage/>} /> 
-    <Route path="checkout" element={<CheckoutPage/>} />
-    <Route path="orders" element={<OrdersPage/>} />
+    <Route index element={<HomePage cartItems={cartItems} setCartItems={setCartItems}/>} /> 
+    <Route path="checkout" element={<CheckoutPage cartItems={cartItems} setCartItems={setCartItems}/>} />
+    <Route path="orders" element={<OrdersPage cartItems={cartItems} setCartItems={setCartItems}/>} />
     <Route path="tracking" element={<TrackingPage/>} />
     <Route path="*" element={<NotFoundPage/>} />
     </Routes>
