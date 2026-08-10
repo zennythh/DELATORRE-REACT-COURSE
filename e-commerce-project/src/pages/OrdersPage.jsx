@@ -1,13 +1,24 @@
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import { Header } from '../components/Header'
 import '../styles/OrdersPage.css'
 import OrdersIcon from '../images/orders-favicon.png'
 
 export function OrdersPage(){
+  const [ cartItems, setCartItems ] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/cart-items')
+    .then((response) => {
+      setCartItems(response.data);
+    }) 
+  }, [])
+  
   return(
     <>
       <link rel="icon" href={OrdersIcon} />
       <title> Orders </title>
-      <Header />
+      <Header cartItems={cartItems}/>
   
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
