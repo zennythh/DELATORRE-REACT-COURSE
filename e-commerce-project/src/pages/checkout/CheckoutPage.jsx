@@ -12,11 +12,11 @@ export function CheckoutPage({ cartItems, setCartItems }){
   
   useEffect(()=>{
     const getDeliveries = async () => {
-      let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime') 
+      const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime') 
         setDeliveryOpts(response.data)
     }
     const getPaymentSummaries = async () => {
-      response = await axios.get('/api/payment-summary')
+      const response = await axios.get('/api/payment-summary')
         setPaymentSummary(response.data)
     }
     getDeliveries()
@@ -28,7 +28,7 @@ export function CheckoutPage({ cartItems, setCartItems }){
       <link rel="icon" href={CartIcon} />
       <title>Checkout</title>
       
-      <CheckoutHeader />
+      <CheckoutHeader cartItems={cartItems}/>
   
       <div className="checkout-page">
         <div className="page-title">Review your order</div>

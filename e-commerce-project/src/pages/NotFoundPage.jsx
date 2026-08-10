@@ -1,7 +1,7 @@
 import { Header } from '../components/Header'
 import '../styles/NotFoundPage.css'
 
-export function NotFoundPage(){
+export function NotFoundPage({ cartItems }){
   return (
     <>
       <title> 404 Not Found </title>
