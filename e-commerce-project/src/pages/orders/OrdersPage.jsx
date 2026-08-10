@@ -7,7 +7,7 @@ import { formatMoney } from '../../utils/money'
 import '../../styles/OrdersPage.css'
 import OrdersIcon from '../../images/orders-favicon.png'
 
-export function OrdersPage({ cartItems, setCartItems }){
+export function OrdersPage({ cartItems, getCartItems }){
   const [ orders, setOrders ] = useState([])
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function OrdersPage({ cartItems, setCartItems }){
   
       <div className="orders-page">
         <div className="page-title">Your Orders</div>  
-        <OrdersGrid orders={orders} />
+        <OrdersGrid orders={orders} getCartItems={getCartItems}/>
       </div>
     </>    
   );
