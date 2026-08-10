@@ -1,29 +1,8 @@
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { Header } from '../components/Header'
-import { formatMoney } from '../utils/money'
-import '../styles/HomePage.css'
-import HomeIcon from '../images/home-favicon.png'
+import { formatMoney } from '../../utils/money'
 
-export function HomePage({ cartItems, setCartItems }){
-  const [ products, setProducts ] = useState([]);
-  
-  useEffect(() => {
-    axios.get('/api/products')
-    .then((response) => {
-      setProducts(response.data);
-    }) 
-  }, [])
-
-  
+export function ProductsGrid({ products }){
   return (
-    <>
-      <link rel="icon" href={HomeIcon} />
-      <title> Ecommerce Project </title>
-
-      <Header cartItems={cartItems}/>
-      <div className="home-page">
-      <div className="products-grid">
+    <div className="products-grid">
         {products.map((product) => {
           return (
             <div key={product.id} className="product-container">
@@ -77,7 +56,5 @@ export function HomePage({ cartItems, setCartItems }){
           );
         })}
       </div>
-    </div>
-    </>
   );
 }
