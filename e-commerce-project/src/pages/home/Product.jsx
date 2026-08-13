@@ -27,10 +27,12 @@ export function Product({ product, getCartItems }) {
   };
 
   return (
-    <div className="product-container">
+    <div className="product-container"
+      data-testid="prod-container"
+    >
       <div className="product-image-container">
         <img className="product-image"
-          data-testid="product-image"
+          data-testid="product-images"
           src={product.image} />
       </div>
 
