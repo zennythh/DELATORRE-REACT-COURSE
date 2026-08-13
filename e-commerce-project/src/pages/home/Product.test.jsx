@@ -9,6 +9,8 @@ vi.mock('axios')
 describe('Product component', () => {
   let product 
   let getCartItems
+  let addToCartBtn
+  let user = userEvent.setup()
 
   beforeEach(() => {
     product = {
@@ -24,6 +26,7 @@ describe('Product component', () => {
     } 
     getCartItems= vi.fn()   
     render(<Product product={product} getCartItems={getCartItems}/>)
+    addToCartBtn = screen.getByTestId('addtocart-btn')
   }) 
   
   it('displays product details correctly', () => {
@@ -48,8 +51,7 @@ describe('Product component', () => {
   })
 
   it('has a functional add to cart btn', async () => {
-    const user = userEvent.setup()
-    const addToCartBtn = screen.getByTestId('addtocart-btn')
+    
     await user.click(addToCartBtn)
 
     expect(axios.post).toHaveBeenCalled(
@@ -61,4 +63,25 @@ describe('Product component', () => {
     )
     expect(getCartItems).toHaveBeenCalled()
     })
+
+  it('has a functional quantity selector', async () => {
+    const quantitySelector = screen.getByTestId('quantity-selector')  
+    await user.selectOptions(quantitySelector, "3")
+    await user.click(addToCartBtn)
+    
+    expect(
+      quantitySelector
+    ).toHaveValue('3')
+
+    expect(axios.post).toHaveBeenCalled(
+      '/api/cart-items',
+      {
+        productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+        quantity: 3
+      }
+    )
+
+    expect(getCartItems).toHaveBeenCalled()
+    
+  })
 });

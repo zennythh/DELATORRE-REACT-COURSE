@@ -9,8 +9,10 @@ vi.mock('axios')
 
 describe('HomePage component', () => {
   let getCartItems
+  let user
 
   beforeEach (() => {
+    user = userEvent.setup()
     getCartItems = vi.fn();
     axios.get.mockImplementation( async (urlPath) => {
       console.log(urlPath)
@@ -62,6 +64,37 @@ describe('HomePage component', () => {
     within(prodContainers[1])
       .getByText('Intermediate Size Basketball')
     ).toBeInTheDocument()
+  })
+
+  it('has functional addtocart btns in the homepage', async () => {
+    render(
+      <MemoryRouter>
+        <HomePage cartItems={[]} getCartItems={getCartItems}/>)
+      </MemoryRouter>
+    )
+    const prodContainers = await screen.findAllByTestId('prod-container')
+    const addToCart1 = within(prodContainers[0]).getByTestId('addtocart-btn')
+    const addToCart2 = within(prodContainers[1]).getByTestId('addtocart-btn')
+    
+    await user.click(addToCart1)
+    expect(axios.post).toHaveBeenNthCalledWith(1,
+      '/api/cart-items',
+      {
+        productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+        quantity: 1
+      }                                         
+    )
+
+    await user.click(addToCart2)
+    expect(axios.post).toHaveBeenNthCalledWith(2,
+      '/api/cart-items',
+      {
+        productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+        quantity: 1
+      }                                         
+    )
+
+    expect(getCartItems).toHaveBeenCalledTimes(2)    
   })
 })
 

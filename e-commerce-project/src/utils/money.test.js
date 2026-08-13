@@ -7,7 +7,7 @@ it('format 1999 cents as $19.99', () => {
 });
 
 it('display 2 decimals', () => {
-  expect(formatMoney(1090)).toBe('$10.90')
-  expect(formatMoney(100)).toBe('$1.00')
+  expect(formatMoney(-1090)).toBe('-$10.90')
+  expect(formatMoney(0)).toBe('$0.00')
 })
 })
