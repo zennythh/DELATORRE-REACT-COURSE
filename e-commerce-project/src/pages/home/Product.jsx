@@ -78,6 +78,7 @@ export function Product({ product, getCartItems }) {
       </div>
 
       <button className="add-to-cart-button button-primary"
+        data-testid="addtocart-btn"
         onClick={addToCart}>
         Add to Cart
       </button>
