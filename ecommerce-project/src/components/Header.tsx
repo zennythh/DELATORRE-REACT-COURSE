@@ -1,10 +1,18 @@
-import { NavLink, useNavigate, useSearchParams } from 'react-router'
-import { useState } from 'react'
-import '../styles/Header.css'
-import LogoWhite from '../images/logo-white.png'
-import MobileLogoWhite from '../images/mobile-logo-white.png'
+import { NavLink, useNavigate, useSearchParams } from 'react-router';
+import { useState } from 'react';
+import '../styles/Header.css';
+import LogoWhite from '../images/logo-white.png';
+import MobileLogoWhite from '../images/mobile-logo-white.png';
 
-export function Header({ cartItems }) {
+type HeaderProps = {
+  cartItems:{
+   productId: string;
+   quantity: number;
+   deliveryOptionId: string;
+  }[]
+  }
+
+export function Header({ cartItems }: HeaderProps) {
   let totalQuantity = 0;
 
   const [searchKey, setSearchKey] = useState('')
