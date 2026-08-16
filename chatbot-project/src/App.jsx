@@ -15,8 +15,8 @@ function App() {
           yow:'wasap',
           shabu: 'shhhhhh',
           galing: 'saludo',
-          iyot: 'tara',
-          aljean: 'nagjajakol sa jnv'
+          labas: 'tol',
+          aljean: 'mabait'
         }
     );
   }, [])
