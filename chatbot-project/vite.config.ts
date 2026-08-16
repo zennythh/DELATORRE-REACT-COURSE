@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: '/zennythh-chatbot'
+  plugins: [react({
+  babel: {
+    plugins: [['babel-plugin-react-compiler', { target: '19' }]],
+  },
+})],
 })
