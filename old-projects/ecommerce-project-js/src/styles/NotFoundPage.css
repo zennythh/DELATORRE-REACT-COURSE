@@ -1,0 +1,18 @@
+.msg-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-text {
+  font-size: 40px;
+  font-family: Arial;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sub-text {
+  font-size: 15px;
+}
