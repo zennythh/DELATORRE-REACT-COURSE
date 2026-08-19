@@ -1,0 +1,38 @@
+.user-msg {
+        display: flex;
+        justify-content: end;
+        align-items: start;
+}
+
+.chatbot-msg {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+}
+
+.chat-profile {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 45px;
+}
+
+.loading-spinner {
+        height: 40px;
+        margin: -15px;
+}
+
+.msg-text {
+        background-color: rgb(238, 238, 238);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        max-width: 300px;
+}
+
+.timestamp {
+       font-size: 12px;
+       color: dimgray;
+}

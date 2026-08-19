@@ -3,10 +3,19 @@ import { Chatbot } from 'supersimpledev'
 import { ChatInput } from './components/ChatInput'
 import { ChatMessages } from './components/ChatMessages'
 import './App.css'
+import RobotProfile from './assets/robot.png'
+
+type ChatMessage = {
+  id: string;
+  message: string;
+  sender: string;
+};
 
 function App() {
-  const [ chatMessages, setChatMessages ] = useState([]);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);  
   const [ isLoading, setIsLoading ] = useState(false);
+  let num = chatMessages.length;
+  let title = `${num} ${num === 1 ? 'message' : 'messages'}`
 
   useEffect(()=> {
     Chatbot.addResponses(
@@ -22,6 +31,10 @@ function App() {
   }, [])
   
   return (
+    <>
+    <link rel="icon" href={RobotProfile} />
+    <title>{title}</title>
+
     <div
       className="app-container"
     > 
@@ -36,6 +49,7 @@ function App() {
       setIsLoading={setIsLoading}
     />      
     </div>
+    </>
   );
 }
 
